@@ -1,0 +1,120 @@
+
+ID_STR_DSSU_0_0	ACC开关	x
+ID_STR_DSSU_1_0	未激活	x
+ID_STR_DSSU_2_0	激活	x
+
+ID_STR_DSSU_0_1	一键启动开关	x
+ID_STR_DSSU_1_1	未激活	x
+ID_STR_DSSU_2_1	激活	x
+
+ID_STR_DSSU_0_2	中控解锁开关	x	
+ID_STR_DSSU_1_2	未激活	x
+ID_STR_DSSU_2_2	激活	x
+
+ID_STR_DSSU_0_3	中控闭锁开关	x
+ID_STR_DSSU_1_3	未激活	x
+ID_STR_DSSU_2_3	激活	x
+
+ID_STR_DSSU_0_4	位置灯开关	x
+ID_STR_DSSU_1_4	未激活	x
+ID_STR_DSSU_2_4	激活	x
+
+ID_STR_DSSU_0_5	倒档开关	x
+ID_STR_DSSU_1_5	未激活	x
+ID_STR_DSSU_2_5	激活	x
+
+ID_STR_DSSU_0_6	刹车踏板开关	x
+ID_STR_DSSU_1_6	未激活	x
+ID_STR_DSSU_2_6	激活	x
+
+ID_STR_DSSU_0_7	前洗涤开关	x                                                        
+ID_STR_DSSU_1_7	未激活	x
+ID_STR_DSSU_2_7	激活	x
+
+ID_STR_DSSU_0_8	前雾灯开关	x
+ID_STR_DSSU_1_8	未激活	x
+ID_STR_DSSU_2_8	激活	x
+
+ID_STR_DSSU_0_9	危险报警灯开关	x                                                       
+ID_STR_DSSU_1_9	未激活	x
+ID_STR_DSSU_2_9	激活	x
+
+ID_STR_DSSU_0_10	右前门状态开关	x                                                           
+ID_STR_DSSU_1_10	未激活	x
+ID_STR_DSSU_2_10	激活	x
+
+ID_STR_DSSU_0_11	右后门状态开关	x                                                            
+ID_STR_DSSU_1_11	未激活	x
+ID_STR_DSSU_2_11	激活	x
+
+ID_STR_DSSU_0_12	右转向开关	x                                             
+ID_STR_DSSU_1_12	未激活	x
+ID_STR_DSSU_2_12	激活	x
+
+ID_STR_DSSU_0_13	后雾灯	x                                             
+ID_STR_DSSU_1_13	激活	x
+ID_STR_DSSU_2_13	未激活	x
+
+ID_STR_DSSU_0_14	后雾灯开关	x                                                           
+ID_STR_DSSU_1_14	未激活	x
+ID_STR_DSSU_2_14	激活	x
+
+ID_STR_DSSU_0_15	左前门状态开关	x         
+ID_STR_DSSU_1_15	未激活	x
+ID_STR_DSSU_2_15	激活	x
+
+ID_STR_DSSU_0_16	左后门状态开关	x                                                  
+ID_STR_DSSU_1_16	未激活	x
+ID_STR_DSSU_2_16	激活	x
+
+ID_STR_DSSU_0_17	左转向开关	x                                          
+ID_STR_DSSU_1_17	未激活	x
+ID_STR_DSSU_2_17	激活	x
+
+ID_STR_DSSU_0_18	手刹开关	x                                          
+ID_STR_DSSU_1_18	未激活	x
+ID_STR_DSSU_2_18	激活	x
+
+ID_STR_DSSU_0_19	远光灯开关	x                                                           
+ID_STR_DSSU_1_19	未激活	x
+ID_STR_DSSU_2_19	激活	x
+
+ID_STR_DSSU_0_20	当前存储的胎压传感器数	x
+
+ID_STR_DSSU_0_21	右前胎压传感器ID	x
+
+ID_STR_DSSU_0_22	右后胎压传感器ID	x
+
+ID_STR_DSSU_0_23	左前胎压传感器ID	x
+
+ID_STR_DSSU_0_24	左后胎压传感器ID	x
+
+ID_STR_DSSU_0_25	BCM配置信息(防盗控制功能)	x
+ID_STR_DSSU_1_25	使能	x
+ID_STR_DSSU_2_25	禁用	x
+
+ID_STR_DSSU_0_26	当前所处锁状态	x
+ID_STR_DSSU_1_26	解锁	x
+ID_STR_DSSU_2_26	中控上锁	x
+ID_STR_DSSU_3_26	超级锁	x
+ID_STR_DSSU_4_26	----	x
+
+ID_STR_DSSU_0_27	锁是否处于热保护	x
+ID_STR_DSSU_1_27	是	x
+ID_STR_DSSU_2_27	否	x
+
+ID_STR_DSSU_0_28	右转向灯	x
+ID_STR_DSSU_1_28	激活	x
+ID_STR_DSSU_2_28	未激活	x
+
+ID_STR_DSSU_0_29	左转向灯	x
+ID_STR_DSSU_1_29	激活	x
+ID_STR_DSSU_2_29	未激活	x
+
+ID_STR_DSSU_0_30	近光灯	x
+ID_STR_DSSU_1_30	激活	x
+ID_STR_DSSU_2_30	未激活	x
+
+ID_STR_DSSU_0_31	远光灯	x
+ID_STR_DSSU_1_31	激活	x
+ID_STR_DSSU_2_31	未激活	x

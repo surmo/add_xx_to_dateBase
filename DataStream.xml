@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root version="1.0">
+  <function ID="ID_MENU_DATA_DS">
+    <show label="" type="data_stream_select">
+      <param type="function" value="ID_FUNCTION_READ_DATASTREAM"/>
+      <param label="data_stream_id" type="ui_data_buffer" value=""/>
+      <param label="GROUP" type="string" value="0"/>
+    </show>
+  </function>
+  <function ID="ID_FUNCTION_READ_DATASTREAM">
+    <call_protocol label="data_stream" function="read_data_stream">
+      <param type="ui_data_buffer" value="data_stream_id"/>
+    </call_protocol>
+    <judge_tip_jump use_label="data_stream"/>
+    <show label="" type="read_data_stream">
+      <param type="protocol_data" value="data_stream"/>
+    </show>
+  </function>
+  <data_stream_lib>
+    <group ID="0" caption="ID_STR_DS_GROUP_0">
+      <data_stream ID="0" caption="ID_STR_DSSU_0_0" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_0</command_id>  
+        <valid_byte_offset>8</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(3,(A&amp;0x40)&gt;&gt;6)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="1" caption="ID_STR_DSSU_0_1" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_1</command_id>  
+        <valid_byte_offset>7</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(3,(A&amp;0x80)&gt;&gt;7)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="2" caption="ID_STR_DSSU_0_2" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_2</command_id>  
+        <valid_byte_offset>7</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(3,(A&amp;0x10)&gt;&gt;4)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="3" caption="ID_STR_DSSU_0_3" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_3</command_id>  
+        <valid_byte_offset>7</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(3,(A&amp;0x20)&gt;&gt;5)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="4" caption="ID_STR_DSSU_0_4" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_4</command_id>  
+        <valid_byte_offset>6</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(3,(A&amp;0x01)&gt;&gt;0)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="5" caption="ID_STR_DSSU_0_5" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_5</command_id>  
+        <valid_byte_offset>8</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(3,(A&amp;0x08)&gt;&gt;3)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="6" caption="ID_STR_DSSU_0_6" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_6</command_id>  
+        <valid_byte_offset>8</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(3,(A&amp;0x10)&gt;&gt;4)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="7" caption="ID_STR_DSSU_0_7" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_7</command_id>  
+        <valid_byte_offset>5</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(3,(A&amp;0x40)&gt;&gt;6)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="8" caption="ID_STR_DSSU_0_8" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_8</command_id>  
+        <valid_byte_offset>7</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(3,(A&amp;0x08)&gt;&gt;3)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="9" caption="ID_STR_DSSU_0_9" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_9</command_id>  
+        <valid_byte_offset>4</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(3,(A&amp;0x80)&gt;&gt;7)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="10" caption="ID_STR_DSSU_0_10" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_10</command_id>  
+        <valid_byte_offset>4</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(3,(A&amp;0x10)&gt;&gt;4)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="11" caption="ID_STR_DSSU_0_11" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_11</command_id>  
+        <valid_byte_offset>4</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(3, (A&amp;0x04)&gt;&gt;2)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="12" caption="ID_STR_DSSU_0_12" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_12</command_id>  
+        <valid_byte_offset>6</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(3,(A&amp;0x20)&gt;&gt;5)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="13" caption="ID_STR_DSSU_0_13" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_13</command_id>  
+        <valid_byte_offset>5</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(14,(A&amp;0x02)&gt;&gt;1)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="14" caption="ID_STR_DSSU_0_14" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_14</command_id>  
+        <valid_byte_offset>6</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(3,(A&amp;0x02)&gt;&gt;1)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="15" caption="ID_STR_DSSU_0_15" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_15</command_id>  
+        <valid_byte_offset>4</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(3,(A&amp;0x20)&gt;&gt;5)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="16" caption="ID_STR_DSSU_0_16" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_16</command_id>  
+        <valid_byte_offset>4</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(3,(A&amp;0x08)&gt;&gt;3)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="17" caption="ID_STR_DSSU_0_17" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_17</command_id>  
+        <valid_byte_offset>6</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(3,(A&amp;0x40)&gt;&gt;6)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="18" caption="ID_STR_DSSU_0_18" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_18</command_id>  
+        <valid_byte_offset>5</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(3,(A&amp;0x02)&gt;&gt;1)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="19" caption="ID_STR_DSSU_0_19" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_19</command_id>  
+        <valid_byte_offset>6</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(3,(A&amp;0x10)&gt;&gt;4)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="20" caption="ID_STR_DSSU_0_20" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_20</command_id>  
+        <valid_byte_offset>3</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>A</formula> 
+        </caculate>  
+        <format>%.0f</format> 
+      </data_stream>
+      <data_stream ID="21" caption="ID_STR_DSSU_0_21" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_21</command_id>  
+        <valid_byte_offset>7</valid_byte_offset>  
+        <valid_byte_number>4</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula/> 
+        </caculate>  
+        <format>HEX</format> 
+      </data_stream>
+      <data_stream ID="22" caption="ID_STR_DSSU_0_22" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_22</command_id>  
+        <valid_byte_offset>15</valid_byte_offset>  
+        <valid_byte_number>4</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula/> 
+        </caculate>  
+        <format>HEX</format> 
+      </data_stream>
+      <data_stream ID="23" caption="ID_STR_DSSU_0_23" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_23</command_id>  
+        <valid_byte_offset>3</valid_byte_offset>  
+        <valid_byte_number>4</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula/> 
+        </caculate>  
+        <format>HEX</format> 
+      </data_stream>
+      <data_stream ID="24" caption="ID_STR_DSSU_0_24" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_24</command_id>  
+        <valid_byte_offset>11</valid_byte_offset>  
+        <valid_byte_number>4</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula/> 
+        </caculate>  
+        <format>HEX</format> 
+      </data_stream>
+      <data_stream ID="25" caption="ID_STR_DSSU_0_25" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_25</command_id>  
+        <valid_byte_offset>4</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(4,(A&amp;0x10)&gt;&gt;4)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="26" caption="ID_STR_DSSU_0_26" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_26</command_id>  
+        <valid_byte_offset>3</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(6,A&amp;0xf0&gt;&gt;5)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="27" caption="ID_STR_DSSU_0_27" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_27</command_id>  
+        <valid_byte_offset>3</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(8,(A&amp;0x80)&gt;&gt;7)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="28" caption="ID_STR_DSSU_0_28" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_28</command_id>  
+        <valid_byte_offset>4</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(4,(A&amp;0x10)&gt;&gt;4)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="29" caption="ID_STR_DSSU_0_29" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_29</command_id>  
+        <valid_byte_offset>4</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(4,(A&amp;0x08)&gt;&gt;3)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="30" caption="ID_STR_DSSU_0_30" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_30</command_id>  
+        <valid_byte_offset>4</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(4,(A&amp;0x04)&gt;&gt;2)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream>
+      <data_stream ID="31" caption="ID_STR_DSSU_0_31" unit="" min="" max="" self_learn=""> 
+        <command_id>CMD_DATASTREAM_31</command_id>  
+        <valid_byte_offset>4</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <formula>switch(4,(A&amp;0x01)&gt;&gt;0)</formula> 
+        </caculate>  
+        <format>STRING</format> 
+      </data_stream> 
+    </group> 
+  </data_stream_lib>
+  <switchs> 
+    <switch ID="3"> 
+      <case value="0X00">ID_STR_DSSU_1_0</case>  
+      <default>ID_STR_DSSU_2_0</default> 
+    </switch>
+    <switch ID="3"> 
+      <case value="0X00">ID_STR_DSSU_1_1</case>  
+      <default>ID_STR_DSSU_2_1</default> 
+    </switch>
+    <switch ID="3"> 
+      <case value="0X00">ID_STR_DSSU_1_2</case>  
+      <default>ID_STR_DSSU_2_2</default> 
+    </switch>
+    <switch ID="3"> 
+      <case value="0X00">ID_STR_DSSU_1_3</case>  
+      <default>ID_STR_DSSU_2_3</default> 
+    </switch>
+    <switch ID="3"> 
+      <case value="0X00">ID_STR_DSSU_1_4</case>  
+      <default>ID_STR_DSSU_2_4</default> 
+    </switch>
+    <switch ID="3"> 
+      <case value="0X00">ID_STR_DSSU_1_5</case>  
+      <default>ID_STR_DSSU_2_5</default> 
+    </switch>
+    <switch ID="3"> 
+      <case value="0X00">ID_STR_DSSU_1_6</case>  
+      <default>ID_STR_DSSU_2_6</default> 
+    </switch>
+    <switch ID="3"> 
+      <case value="0X00">ID_STR_DSSU_1_7</case>  
+      <default>ID_STR_DSSU_2_7</default> 
+    </switch>
+    <switch ID="3"> 
+      <case value="0X00">ID_STR_DSSU_1_8</case>  
+      <default>ID_STR_DSSU_2_8</default> 
+    </switch>
+    <switch ID="3"> 
+      <case value="0X00">ID_STR_DSSU_1_9</case>  
+      <default>ID_STR_DSSU_2_9</default> 
+    </switch>
+    <switch ID="3"> 
+      <case value="0X00">ID_STR_DSSU_1_10</case>  
+      <default>ID_STR_DSSU_2_10</default> 
+    </switch>
+    <switch ID="3"> 
+      <case value="0X00">ID_STR_DSSU_1_11</case>  
+      <default>ID_STR_DSSU_2_11</default> 
+    </switch>
+    <switch ID="3"> 
+      <case value="0X00">ID_STR_DSSU_1_12</case>  
+      <default>ID_STR_DSSU_2_12</default> 
+    </switch>
+    <switch ID="14"> 
+      <case value="0X01">ID_STR_DSSU_1_13</case>  
+      <default>ID_STR_DSSU_2_13</default> 
+    </switch>
+    <switch ID="3"> 
+      <case value="0X00">ID_STR_DSSU_1_14</case>  
+      <default>ID_STR_DSSU_2_14</default> 
+    </switch>
+    <switch ID="3"> 
+      <case value="0X00">ID_STR_DSSU_1_15</case>  
+      <default>ID_STR_DSSU_2_15</default> 
+    </switch>
+    <switch ID="3"> 
+      <case value="0X00">ID_STR_DSSU_1_16</case>  
+      <default>ID_STR_DSSU_2_16</default> 
+    </switch>
+    <switch ID="3"> 
+      <case value="0X00">ID_STR_DSSU_1_17</case>  
+      <default>ID_STR_DSSU_2_17</default> 
+    </switch>
+    <switch ID="3"> 
+      <case value="0X00">ID_STR_DSSU_1_18</case>  
+      <default>ID_STR_DSSU_2_18</default> 
+    </switch>
+    <switch ID="3"> 
+      <case value="0X00">ID_STR_DSSU_1_19</case>  
+      <default>ID_STR_DSSU_2_19</default> 
+    </switch>
+    <switch ID="4"> 
+      <case value="0X01">ID_STR_DSSU_1_25</case>  
+      <default>ID_STR_DSSU_2_25</default> 
+    </switch>
+    <switch ID="6"> 
+      <case value="0X00">ID_STR_DSSU_1_26</case>  
+      <case value="0X02">ID_STR_DSSU_2_26</case>  
+      <case value="0X04">ID_STR_DSSU_3_26</case>  
+      <default>ID_STR_DSSU_4_26</default> 
+    </switch>
+    <switch ID="8"> 
+      <case value="0X01">ID_STR_DSSU_1_27</case>  
+      <case value="0X00">ID_STR_DSSU_2_27</case> 
+    </switch>
+    <switch ID="4"> 
+      <case value="0X01">ID_STR_DSSU_1_28</case>  
+      <default>ID_STR_DSSU_2_28</default> 
+    </switch>
+    <switch ID="4"> 
+      <case value="0X01">ID_STR_DSSU_1_29</case>  
+      <default>ID_STR_DSSU_2_29</default> 
+    </switch>
+    <switch ID="4"> 
+      <case value="0X01">ID_STR_DSSU_1_30</case>  
+      <default>ID_STR_DSSU_2_30</default> 
+    </switch>
+    <switch ID="4"> 
+      <case value="0X01">ID_STR_DSSU_1_31</case>  
+      <default>ID_STR_DSSU_2_31</default> 
+    </switch>
+  </switchs>
+</root>
