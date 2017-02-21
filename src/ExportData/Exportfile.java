@@ -2,13 +2,8 @@ package ExportData;
 
 import java.util.List;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
-
 import Driverlayor.DataStructXml;
 import Driverlayor.IOfile;
-import GUIllayor.inpudata;
-import facetest.SelectSearchResul;
-import facetest.facetest1.*;
 
 
 public class Exportfile {
@@ -46,12 +41,12 @@ public class Exportfile {
 		}
 		//开始写入文件
 		try {
-			iOfile.WriteAXmlFile("DataStream.xml",constString.AddDataStreamInfo(exportDataTemp.dataStreamBuffer.toString(), exportDataTemp.SwitchBuffer.toString()));
-			iOfile.WriteAXmlFile("command.xml", constString.AddCommandInfo(exportDataTemp.CommandBuffer.toString()));
-			iOfile.WriteAXmlFile("Main.xml",constString.AddmaninInfo(null));
-			iOfile.Writefile(exportDataTemp.CaptionBuffer.toString(), "STrTable.txt");
+			iOfile.WriteAXmlFile("protocol/DataStream.xml",constString.AddDataStreamInfo(exportDataTemp.dataStreamBuffer.toString(), exportDataTemp.SwitchBuffer.toString()));
+			iOfile.WriteAXmlFile("protocol/command.xml", constString.AddCommandInfo(exportDataTemp.CommandBuffer.toString()));
+			iOfile.WriteAXmlFile("protocol/Main.xml",constString.AddmaninInfo(null));
+			iOfile.Writefile(exportDataTemp.CaptionBuffer.toString(), "protocol/STrTable.txt");
 			
-			iOfile.Writefile(exportDataTemp.protocolCommand.toString()+exportDataTemp.protocolstream.toString(), "Protocol.asm");
+			iOfile.Writefile(exportDataTemp.protocolCommand.toString()+exportDataTemp.protocolstream.toString(), "protocol/Protocol.asm");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

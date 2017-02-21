@@ -1,11 +1,14 @@
 package Driverlayor;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import javax.xml.crypto.Data;
 
 
 
@@ -27,63 +30,63 @@ public class CUDBtoDateBase {
 	}
 	
 	//增加一条数据
-	public static void Add(String DBname,CmdAndChinaStr addstr) throws SQLException{
-		Connection conn=CreateCon.Getconnetion();
-		
-		String sql="insert into "+DBname+" (CANID,Datalen,SID1,SID2,SID3,SID4,ANS_ID,CMD,DataStream,SID)"+
-		"values("+
-		"?,?,?,?,?,?,?,?,?,?)";
-		PreparedStatement psmt=conn.prepareStatement(sql);
-		psmt.setString(1, addstr.GetID());
-		psmt.setString(2, addstr.GetDataLen());
-		psmt.setString(3, addstr.GetSID1());
-		psmt.setString(4, addstr.GetSID2());
-		psmt.setString(5, addstr.GetSID3());
-		psmt.setString(6, addstr.GetSID4());
-		psmt.setString(7, addstr.GetANS_ID());
-		psmt.setString(8, addstr.GetCMD());
-		psmt.setString(9, addstr.GetdataString());
-		psmt.setString(10,addstr.GetSID());
-		
-		psmt.execute();
-		psmt.close();
-		///conn.close();
-		
-	}
-	
-	//根据表名和总的字段获取记录集合
-	public static List<CmdAndChinaStr> select(String DBname,String SID) throws SQLException{
-	
-		List<CmdAndChinaStr> result=new ArrayList<CmdAndChinaStr>();
-		Connection conn=CreateCon.Getconnetion();
-		
-		String sql="select * from "+DBname+" where CANID=?";
-		PreparedStatement psmt=conn.prepareStatement(sql);
-		psmt.setString(1, SID);
-		ResultSet rs=psmt.executeQuery();
-		CmdAndChinaStr temp=null;
-		while(rs.next())
-		{
-			temp=new CmdAndChinaStr();
-			temp.SetCID(rs.getInt("id"));
-			temp.SetID(rs.getString("CANID"));
-			temp.SetCMD(rs.getString("CMD"));
-			temp.SetDataLen(rs.getString("Datalen"));
-			temp.SetSID(rs.getString("SID"));
-			temp.SetSID1(rs.getString("SID1"));
-			temp.SetSID2(rs.getString("SID2"));
-			temp.SetSID3(rs.getString("SID3"));
-			temp.SetSID4(rs.getString("SID4"));
-			temp.SetdataString(rs.getString("DataStream"));
-			
-			result.add(temp);
-		}
-		
-		psmt.close();
-		conn.close();
-		return result;
-		
-	} 
+//	public static void Add(String DBname,CmdAndChinaStr addstr) throws SQLException{
+//		Connection conn=CreateCon.Getconnetion();
+//		
+//		String sql="insert into "+DBname+" (CANID,Datalen,SID1,SID2,SID3,SID4,ANS_ID,CMD,DataStream,SID)"+
+//		"values("+
+//		"?,?,?,?,?,?,?,?,?,?)";
+//		PreparedStatement psmt=conn.prepareStatement(sql);
+//		psmt.setString(1, addstr.GetID());
+//		psmt.setString(2, addstr.GetDataLen());
+//		psmt.setString(3, addstr.GetSID1());
+//		psmt.setString(4, addstr.GetSID2());
+//		psmt.setString(5, addstr.GetSID3());
+//		psmt.setString(6, addstr.GetSID4());
+//		psmt.setString(7, addstr.GetANS_ID());
+//		psmt.setString(8, addstr.GetCMD());
+//		psmt.setString(9, addstr.GetdataString());
+//		psmt.setString(10,addstr.GetSID());
+//		
+//		psmt.execute();
+//		psmt.close();
+//		///conn.close();
+//		
+//	}
+//	
+//	//根据表名和总的字段获取记录集合
+//	public static List<CmdAndChinaStr> select(String DBname,String SID) throws SQLException{
+//	
+//		List<CmdAndChinaStr> result=new ArrayList<CmdAndChinaStr>();
+//		Connection conn=CreateCon.Getconnetion();
+//		
+//		String sql="select * from "+DBname+" where CANID=?";
+//		PreparedStatement psmt=conn.prepareStatement(sql);
+//		psmt.setString(1, SID);
+//		ResultSet rs=psmt.executeQuery();
+//		CmdAndChinaStr temp=null;
+//		while(rs.next())
+//		{
+//			temp=new CmdAndChinaStr();
+//			temp.SetCID(rs.getInt("id"));
+//			temp.SetID(rs.getString("CANID"));
+//			temp.SetCMD(rs.getString("CMD"));
+//			temp.SetDataLen(rs.getString("Datalen"));
+//			temp.SetSID(rs.getString("SID"));
+//			temp.SetSID1(rs.getString("SID1"));
+//			temp.SetSID2(rs.getString("SID2"));
+//			temp.SetSID3(rs.getString("SID3"));
+//			temp.SetSID4(rs.getString("SID4"));
+//			temp.SetdataString(rs.getString("DataStream"));
+//			
+//			result.add(temp);
+//		}
+//		
+//		psmt.close();
+//		conn.close();
+//		return result;
+//		
+//	} 
 	
 	
 	
@@ -190,14 +193,12 @@ public class CUDBtoDateBase {
 	}
 	
 	
-	/*
-	 * 增加一个车型
-	 * 参数1:车型名称
-	 * 参数2：车型表名
-	 * 
-	 * 如果车型已经存在返回失败
-	 * 
-	 * 成功返回true
+	
+	/**
+	 * 增加一个车系
+	 * @param CarName   车系的名称   例如 奔驰
+	 * @param CarTable  车系的表名   必须为字母    例如   Bend
+	 * @return  添加成功返回true  失败返回false
 	 */
 	 public boolean AddCarType(String CarName,String CarTable)
 	{
@@ -295,6 +296,10 @@ where (a.command,a.byteoffset) in (select command,byteoffset from vitae group by
 and rowid not in (select min(rowid) from vitae group by command,byteoffset having count(*)>1) 
 	 */
 
+/**
+ * 删除一个车系中重复的信息  当命令、字节偏移、字节数量、公式、数据流名称一样的时候判断为相同 
+ * @param CarType
+ */
 public static void delectmore(String CarType){
 	try {
 		Connection conn=CreateCon.Getconnetion();

@@ -3,7 +3,7 @@ package Driverlayor;
 
 
 public class DataStructXml {
-	public int ID;
+public int ID;
 public	String DataStream;  //整条数据流
 public	String command_id;  //命令的ID
 public	String command;     //实际的命令

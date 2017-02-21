@@ -1,21 +1,5 @@
 package ExportData;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileWriter;
-import java.text.Format;
-
-import org.dom4j.Document;  
-import org.dom4j.DocumentException;  
-import org.dom4j.Element;
-import org.dom4j.io.OutputFormat;
-import org.dom4j.io.SAXReader;
-import org.dom4j.io.XMLWriter;
-
-
-
-
-
 public class ConstString {
 	//添加数据流其他部分
 	public String AddDataStreamInfo(String DataStream,String Switchs)

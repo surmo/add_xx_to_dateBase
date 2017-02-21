@@ -1,5 +1,7 @@
 package controllayor;
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -8,15 +10,14 @@ import java.util.regex.Pattern;
 
 import javax.swing.JTextArea;
 
-import org.dom4j.Document;  
-import org.dom4j.DocumentException;  
-import org.dom4j.Element;  
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
-import Driverlayor.CmdAndChinaStr;
-import Driverlayor.DataStructXml;
-import Driverlayor.IOfile;  
 import Driverlayor.CUDBtoDateBase;
+import Driverlayor.DataStructXml;
+import Driverlayor.IOfile;
 
 
 
@@ -43,23 +44,29 @@ public class ResolutionXml {
     	
 
     }   
+    
     /*
      * 根据文件夹路径解析XML
      */
+    /**
+     * 根据路径解析xml文档    会检索该目录里边的所有子目录，以main.xml作为判断标准
+     * @param CarTable   该车型的数据表名称，解析的数据会保存在数据表中
+     * @param pathdir    该车型的文件路径
+     */
     public void Resolutionxmlbypath(String CarTable,String pathdir){
-    	pathdir=pathdir.replace("\\", "/");
+    	pathdir=pathdir.replace("\\", "/");//替换路径的斜杠
     	System.out.println("正在统计系统总数量...");
     	showinfo.append("正在统计系统总数量...\n");//显示到UI文本框
-    	//获取包含 Main.xml 文件夹的路径，存入数组
+    	//获取包含 Main.xml 的文件夹的路径，存入数组
     	List<String> mainpath=IOfile.GetAllMainxmlPath(pathdir,"Main.xml");
     	System.out.println("一共"+mainpath.size()+"个系统。");
     	showinfo.append("一共"+mainpath.size()+"个系统。\n");
-    	//开始根据路径解析系统
+    	//开始根据路径解析系统，这里是以系统为单位进行解析了，因为每个系统只有一个main.xml
     	for(int i=0;i<mainpath.size();i++)
     	{
     		System.out.println("开始解析第"+i+"个系统。");
     		showinfo.append("开始解析第"+i+"个系统。\n");
-    		Resolutionxmlbydir(CarTable,mainpath.get(i));
+    		Resolutionxmlbydir(CarTable,mainpath.get(i));//解析
     	}
     	showinfo.append("解析完成！");
     }
@@ -70,15 +77,22 @@ public class ResolutionXml {
      *command.xml
      *等文件的目录
      */
+    /**
+     * 解析一个系统，该文件必须是包含main.xml的文件夹
+     * 解析之后匹配StrTable里边的名称
+     * 解析之后匹配command里边的命令
+     * @param CarTable  该车型的数据表名称，解析的数据会保存在数据表中
+     * @param sysdir   系统的路径
+     */
  static   public void Resolutionxmlbydir(String CarTable,String sysdir)
     {
-	 	CUDBtoDateBase dbtemp=new CUDBtoDateBase();
+	 	CUDBtoDateBase dbtemp=new CUDBtoDateBase();//获取数据库连接
 	 	System.out.println("开始解析:"+sysdir);
 	 	
     	if(StartResolutionXml(sysdir+"/DataStream.xml"))//开始解析,解析到的数据保存在全局变量中   解析成功会返回true
     	{
-    		MatchChinaStr(sysdir+"/StrTable.txt");//匹配StrTable文件
-    		MatchCommand(sysdir+"/Command.xml");//匹配command.xml文件
+    		MatchChinaStr(sysdir+"/StrTable.txt");//匹配StrTable文件，获取对应的中文名称
+    		MatchCommand(sysdir+"/Command.xml");//匹配command.xml文件  获取对应的命令
     		
     		dbtemp.AddXMlListdataStream(CarTable,C_global_data.DatastreamList);//加入数据库
     		
@@ -106,10 +120,12 @@ public class ResolutionXml {
     	
     }
     
-    /*
-     * 开始解析一个系统
-     * 传入系统的路径
-     */
+   
+ /**
+  * 解析一个系统，提取出数据流信息，数据流用到的command的ID，caption  这里并没有开始匹配
+  * @param filepath  系统的路径
+  * @return  执行情况
+  */
     private  static boolean StartResolutionXml(String filepath) {
     	int streamindex=0;
     	boolean RunningState=true;
@@ -173,13 +189,12 @@ public class ResolutionXml {
    
     
    
-    /*
-     *  遍历  data_stream节点，传入参数必须指向data_stream
-     *  p1:指向数据流的节点
-     *  p2:要保存的数据流的索引
-     *  p3:现在所解析的系统额路径
-     */
-   
+   /**
+    * 遍历  data_stream节点，传入参数必须指向data_stream
+    * @param node 指向数据流的节点
+    * @param datastreamindex  要保存的数据流的索引,每一条数据流的索引是唯一的，用来关联 caption的值  
+    * @param filepath  现在所解析的系统额路径
+    */
     private static void savenode(Element node,int datastreamindex,String filepath) {
     	 DataStructXml listtemp=new DataStructXml();//定义数据流类型的缓存
     	 Sys_caption captiontemp=new Sys_caption();  //定义变量，用来暂时保存Switch的Caption信息和数据流对应的索引
@@ -235,10 +250,11 @@ public class ResolutionXml {
     	}
 	}
     
-     /*
-      * 解析StrTable文件，匹配数据流的中文名称
-      * 传入StrTable的路径
-      */
+    
+    /**
+     * 解析StrTable文件，匹配数据流的中文名称
+     * @param filepath
+     */
     private  static void  MatchChinaStr(String filepath)
      {
     	 try {
@@ -313,8 +329,9 @@ public class ResolutionXml {
     
     
     
-    /*
-     * 获取command表的命令
+    /**
+     * 匹配command表的命令
+     * @param commandpath
      */
 
     private  static void MatchCommand(String commandpath){
@@ -381,6 +398,12 @@ public class ResolutionXml {
      * 并且以当前数据流索引作为标志，保存该条数据流用到的所有
      * caption数据
      */
+    /**
+     * 寻找Switch的信息，将整个Switch保存起来，并且将switch里边case 用到的caption提取出来
+     * @param ID  switch的ID
+     * @param datastreamindex  当前数据流的唯一索引号
+     * @param filepath  
+     */
     private static void MatchSwitch(String ID,int datastreamindex,String filepath){
     	boolean findswitch=false;
     	try{
@@ -394,12 +417,12 @@ public class ResolutionXml {
         	   System.out.println("找不到Switch信息，请确认Switch信息在DataStream.xml中");
         	   return;
            }
-            Iterator<Element> it=e.elementIterator();
+            Iterator<Element> it=e.elementIterator();  //获取所有Switch的集合
             
             while(it.hasNext())
             	{
             		e=it.next();
-            		if(ID.equals(e.attributeValue("ID")))
+            		if(ID.equals(e.attributeValue("ID")))  //找到switch 的ID
             			{
             				C_global_data.DatastreamList.get(datastreamindex).switchStr=e.asXML();
             				findswitch=true;
@@ -411,17 +434,17 @@ public class ResolutionXml {
             //如果单条数据流中有Switch信息
             if(findswitch)
             {
-            	it=e.elementIterator();
+            	it=e.elementIterator();//获取所有的case
             	while(it.hasNext())
             	{
             		Sys_caption temp3=new Sys_caption();
             		e=it.next();
             		temp3.datastreamid=datastreamindex;
-            		temp3.caption=e.getText();
+            		temp3.caption=e.getText();//获取case里边的caption
             		//System.out.println(datastreamID);
             		//System.out.println(e.getName()+"->"+e.getText());
             		//System.out.println();
-            		C_global_data.captionList.add(temp3);
+            		C_global_data.captionList.add(temp3);//保存起来
             	}
             	
             }
@@ -455,14 +478,15 @@ class command_Data{
 	String command;     //命令内容
 	
 }
+//一条数据流中，涉及到的所有caption
 class Sys_caption{
-	int datastreamid;
-	String caption;
+	int datastreamid;//数据流的索引
+	String caption;//caption
 	
 }
 
 class C_global_data{
-	static	List<DataStructXml> DatastreamList=new ArrayList<DataStructXml>();
+	static	List<DataStructXml> DatastreamList=new ArrayList<DataStructXml>();//数据流
 	static  List<StrTableStruct> StrTableList=new ArrayList<StrTableStruct>();
 	static  List<command_Data> CommandList=new ArrayList<command_Data>();
 	static  List<Sys_caption>  captionList=new ArrayList<Sys_caption>();

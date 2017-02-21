@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root>
+  <include file="Command.xml"/>
+  <include file="ECUInformation.xml"/>
+  <include file="DataStream.xml"/>
+  <include file="ActuatorTest.xml"/>
+  <main_menu>
+    <menu ID="ID_MENU_DATA_STREAM" caption="ID_STR_DATA_STREAM" function="ID_MENU_DATA_DS" permission="0"/>
+  </main_menu>
+  <function ID="quit_function">
+    <call_protocol label="" function="quit_system">
+      <param type="command" value="EXIT_CMD"/>
+    </call_protocol>
+  </function>
+</root>

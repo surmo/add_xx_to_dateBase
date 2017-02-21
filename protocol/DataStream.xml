@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root version="1.0">
+  <function ID="ID_MENU_DATA_DS">
+    <show label="" type="data_stream_select">
+      <param type="function" value="ID_FUNCTION_READ_DATASTREAM"/>
+      <param label="data_stream_id" type="ui_data_buffer" value=""/>
+      <param label="GROUP" type="string" value="0"/>
+    </show>
+  </function>
+  <function ID="ID_FUNCTION_READ_DATASTREAM">
+    <call_protocol label="data_stream" function="read_data_stream">
+      <param type="ui_data_buffer" value="data_stream_id"/>
+    </call_protocol>
+    <judge_tip_jump use_label="data_stream"/>
+    <show label="" type="read_data_stream">
+      <param type="protocol_data" value="data_stream"/>
+    </show>
+  </function>
+  <data_stream_lib>
+    <group ID="0" caption="ID_STR_DS_GROUP_0">
+      <data_stream ID="0" caption="ID_STR_DSSU_0_0" unit=" oc" min="" max="" self_learn="0"> 
+        <command_id>CMD_DATASTREAM_0</command_id>  
+        <!--命令偏移-->  
+        <valid_byte_offset>3</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="LJ"> 
+          <!-- 公式 -->  
+          <formula>1,1,0x00,0x00,@57,0x01,0xFE,A*126.5/255-39.5,0xFF,0xFF,@58</formula> 
+        </caculate>  
+        <!-- 显示控制 -->  
+        <format>%.0f</format> 
+      </data_stream>
+      <data_stream ID="1" caption="ID_STR_DSSU_0_1" unit=" oc" min="" max="" self_learn="0"> 
+        <command_id>CMD_DATASTREAM_1</command_id>  
+        <!--命令偏移-->  
+        <valid_byte_offset>3</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="LJ"> 
+          <!-- 公式 -->  
+          <formula>1,1,0x00,0x00,@57,0x01,0xFE,A*126.5/255-39.5,0xFF,0xFF,@58</formula> 
+        </caculate>  
+        <!-- 显示控制 -->  
+        <format>%.0f</format> 
+      </data_stream>
+      <data_stream ID="2" caption="ID_STR_DSSU_0_2" unit="oc" min="" max="" self_learn="0"> 
+        <command_id>CMD_DATASTREAM_2</command_id>  
+        <!--命令偏移-->  
+        <valid_byte_offset>3</valid_byte_offset>  
+        <valid_byte_number>1</valid_byte_number>  
+        <caculate type="FORMULA_PARSER"> 
+          <!-- 公式 -->  
+          <formula>A*127.5/255-40</formula> 
+        </caculate>  
+        <!-- 显示控制 -->  
+        <format>%.1f</format> 
+      </data_stream> 
+    </group> 
+  </data_stream_lib>
+  <switchs></switchs>
+</root>

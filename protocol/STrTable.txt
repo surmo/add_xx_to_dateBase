@@ -1,0 +1,6 @@
+
+ID_STR_DSSU_0_0	右侧设置温度(ETC无此配置)	X
+
+ID_STR_DSSU_0_1	左侧设置温度	X
+
+ID_STR_DSSU_0_2	外温传感器	X
